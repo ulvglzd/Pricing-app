@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html">
+    
+    <h:head>
+        <title>Price Change</title>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            Select currency: <h:outputText value="&#160;" />
+            <h:selectOneMenu value='#{pricingBean.currency}'>
+                <f:selectItem itemValue='USD' itemLabel='USD'/>
+                <f:selectItem itemValue='AZN' itemLabel='AZN'/>
+                <f:selectItem itemValue='TRY' itemLabel='TRY'/>
+                <f:selectItem itemValue='EUR' itemLabel='EUR'/>
+            </h:selectOneMenu> <h:outputText value="&#160;" /> <h:outputText value="&#160;" />
+            <h:commandButton value='Submit' actionListener='#{pricingBean.defineExchangeRate()}'/>
+            
+            <br/><br/>
+            
+            Today's price change : <h:outputText value="&#160;" /> <h:outputText value='#{pricingBean.currency}'/> <h:outputText value="&#160;" /> 
+            <h:outputText value='#{pricingBean.priceChangeForConversion}'/> <h:outputText value="&#160;" />
+            <h:commandButton value='Lookup' actionListener='#{pricingBean.lookUpPriceChange()}'/>
+            <br/><br/>
+            
+            
+            Item:
+            <h:selectOneMenu value='#{pricingBean.selectedItem}'>
+                <f:selectItem itemValue='Item01' itemLabel='Item 1'/>
+                <f:selectItem itemValue='Item02' itemLabel='Item 2'/>
+                <f:selectItem itemValue='Item03' itemLabel='Item 3'/>
+            </h:selectOneMenu>
+            <br/><br/>
+            
+            <h:commandButton value='Apply price change' actionListener='#{pricingBean.applyPriceChange()}'/>
+            <br/><br/>
+            
+            <h:commandButton value='Show current price' actionListener='#{pricingBean.showCurrentPrice()}'/>
+            The current price is: <h:outputText value='#{pricingBean.currency}'/> <h:outputText value="&#160;" />
+            <h:outputText value='#{pricingBean.currentPrice}'/>
+             <br/><br/>
+            
+            Price changed from : $
+            <h:outputText value='#{pricingBean.oldPrice}'/> to
+            <h:outputText value='#{pricingBean.newPrice}'/>
+        </h:form>
+    </h:body>
+    
+</html>
